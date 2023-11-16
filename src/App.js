@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 // import "antd/dist/antd.css";
 import { LinkOutlined } from "@ant-design/icons";
 import { StaticJsonRpcProvider, Web3Provider } from "@ethersproject/providers";
@@ -1138,7 +1138,7 @@ function App(props) {
               </Menu.Item>
             </Menu>
 
-            <Routes>
+            <Switch>
               <Route exact path="/">
                 {/*
                 🎛 this scaffolding is full of commonly used components
@@ -1360,7 +1360,7 @@ function App(props) {
                   blockExplorer={blockExplorer}
                 />
               </Route>
-            </Routes>
+            </Switch>
           </BrowserRouter>
 
           <ThemeSwitch />
