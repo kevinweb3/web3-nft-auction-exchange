@@ -3,13 +3,33 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { ThemeSwitcherProvider } from "react-css-theme-switcher";
+
+const themes = {
+  dark: './theme/dark-theme.css',
+  light: './theme/light-theme.css',
+};
+
+const prevTheme = window.localStorage.getItem("theme");
+
+const subgraphUri: string = "http://localhost:8000/subgraphs/name/scaffold-eth/your-contract";
+
+const client = new ApolloClient({
+  uri: subgraphUri,
+  cache: new InMemoryCache()
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+    <ThemeSwitcherProvider themeMap={themes} defaultTheme={prevTheme ? prevTheme : "light"}>
+      <App subgraphUri={subgraphUri}/>
+    </ThemeSwitcherProvider>
+  </ApolloProvider>,
   </React.StrictMode>
 );
 

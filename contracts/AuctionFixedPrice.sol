@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 /**
- * @dev 固定拍卖价格
+ * @dev 固定价格拍卖
  */
 
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";

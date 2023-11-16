@@ -25,6 +25,7 @@ async function main() {
 
     console.log("auction Contract deployed at :", unauctionContract.address)
     saveAuctionFiles("AuctionUnfixedPrice", unauctionContract.getAddress())
+    
 }
 
 function saveAuctionFiles(name: string, address: Promise<string>) {
@@ -35,7 +36,7 @@ function saveAuctionFiles(name: string, address: Promise<string>) {
 
   const abi = artifacts.readArtifactSync(name);
 
-  fs.writeFileSync(contractsDir + "/" + name + "json", JSON.stringify(abi, null, 2));
+  fs.writeFileSync(contractsDir + "/" + name + ".json", JSON.stringify(abi, null, 2));
   fs.writeFileSync(contractsDir + "/" + name + "-address", JSON.stringify({addres: address}, undefined, 2));
 }
 
